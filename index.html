@@ -1,0 +1,229 @@
+<!--
+Copyright (c) 2020-2022 LG Electronics Inc.
+
+SPDX-License-Identifier: Apache-2.0
+-->
+
+<!DOCTYPE html>
+<html xmlns:https="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Tv Web App</title>
+    <link rel="stylesheet" href="styles.css">
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+            crossorigin="anonymous">
+    <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous">
+    </script>
+</head>
+
+<body>
+<!-- start of  header -->
+<div class='bg-darkblue'>
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-darkblue">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <img src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg"
+                         alt="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_2-d537fb228cf3ded904ef09b136fe3fec72548ebc1fea3fbbd1ad9e36364db38b.svg"/>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                               data-bs-toggle="dropdown" aria-expanded="false">
+                                Movies
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a>
+                                </li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button"
+                               data-bs-toggle="dropdown" aria-expanded="false">
+                                Tv Shows
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button"
+                               data-bs-toggle="dropdown" aria-expanded="false">
+                                People
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button"
+                               data-bs-toggle="dropdown" aria-expanded="false">
+                                More
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                    <i class="bi bi-file-plus-fill" style="color: white;"></i>
+
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+<!-- end of  header -->
+
+
+<!-- start of  HomePage -->
+<section id="home">
+    <div class="">
+        <div
+                style="background-image: url('cover.jpg')"
+                class="bg">
+            <div class="overlay">
+                <div class="container">
+                    <div class="row content">
+                        <div class="col-sm-12">
+                            <div class="movie-thumb">
+                                <h1 class="welcome">
+                                    Welcome.
+                                </h1>
+                                <h3 class="description">
+                                    Millions of movies, TV shows and people to discover. Explore now.
+                                </h3>
+                                <h2 class="title text-center">
+                                    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="input">
+
+                                        <div class="container row">
+                                            <div class="col-sm-12">
+                                                <input
+                                                        id="name"
+                                                        formControlName="name"
+                                                        placeholder="Search for a movie, tv show, person......"
+                                                        type="search"
+                                                        class="input-search"
+                                                />
+                                                <button class="button-search" type="submit">Search</button>
+                                            </div>
+                                            <div class="col-sm-4"></div>
+                                            <div class="col-sm-4">
+                                            </div>
+                                            <div class="col-sm-4"></div>
+                                        </div>
+                                    </form>
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="form.get('name')?.invalid && (form.get('name')?.dirty || form.get('name')?.touched)"
+             class="container alert alert-danger text-center">
+            <div *ngIf="form.get('name')?.errors?.['required']">Field is required.</div>
+        </div>
+
+    </div>
+
+    <div class="collection-film d-block" (activate)="onActivate($event)" *ngIf="loading">
+        <div class="container center me-auto">
+            <div class="row">
+                <h1>
+                    What's Popular
+                </h1>
+                <!-- backend doesn't support pages greater than 500-->
+                <div class="col-md-3 item" *ngFor="let movie of allMovies
+            | paginate
+            : {
+                itemsPerPage:itemsPerPage,
+                currentPage: page,
+                totalItems: 499
+              }; let i = index;" id="item{{i}}" tabindex="0">
+                    <div class=" card h-100 text-center">
+                        <img src="{{'https://image.tmdb.org/t/p/w220_and_h330_face/' + movie['poster_path']}}"
+                             class="card-img-top"
+                             alt="{{'https://image.tmdb.org/t/p/w220_and_h330_face/' + movie['poster_path']}}">
+                        <div class="card-body">
+                            <strong class="card-title">{{movie['title']}}</strong>
+                            <strong class="card-text">{{movie['original_language'] //noinspection
+                                UnresolvedVariable}}</strong>
+                            <strong> {{movie['release_date']}}</strong>
+                        </div>
+                        <div class="card-footer">
+                            <a routerLink="film/{{movie['id']}}" class=" btn btn-primary d-block">View Film</a>
+                        </div>
+                    </div>
+
+                </div>
+                <p class="section-pages">
+                    <pagination-controls class="pagi" (pageChange)="pageChangeEvent($event)"></pagination-controls>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="!loading" class="error">
+        <h1 class="error-message text-center"> {{errorMessage && errorMessage['status']}}</h1>
+        <h2 class="text-center error-message">
+            {{errorMessage && errorMessage['error'] && errorMessage['error']['status_message']}}
+        </h2>
+    </div>
+    <!-- end of  HomePage -->
+
+
+</section>
+<section id="about">
+    <h1>About</h1>
+    <p>This is a tiny SPA</p>
+</section>
+<section id="contact">
+    <h1>Contact</h1>
+    <p>Contact page</p>
+</section>
+
+
+<script>
+    let movie = [];
+    fetch('https://jsonplaceholder.typicode.com/users')
+        .then(response => response.json())
+        .then(res => {
+            movie = res;
+            console.log(res)
+            console.log(movie,`movie`)
+        })
+</script>
+</body>
+
+</html>
