@@ -46,8 +46,11 @@ SPDX-License-Identifier: Apache-2.0
                                 Movies
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a>
+                                <li>
+                                    <a class="dropdown-item" href="#">Action</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="#">Another action</a>
                                 </li>
                                 <li>
                                     <hr class="dropdown-divider">
@@ -125,18 +128,22 @@ SPDX-License-Identifier: Apache-2.0
                                 Millions of movies, TV shows and people to discover. Explore now.
                             </h3>
                             <h2 class="title text-center">
-                                <form [formGroup]="form" (ngSubmit)="onSubmit()" class="input">
+                                <form class="input">
 
                                     <div class="container row">
                                         <div class="col-sm-12">
-                                            <input
-                                                    id="name"
-                                                    formControlName="name"
-                                                    placeholder="Search for a movie, tv show, person......"
-                                                    type="search"
-                                                    class="input-search"
-                                            />
-                                            <button class="button-search" type="submit">Search</button>
+                                            <form id='form' onsubmit="getMoviesByName()">
+                                                <input
+                                                        id="search"
+                                                        type="text"
+                                                        placeholder="Search for a movie, tv show, person......"
+                                                        type="search"
+                                                        class="input-search"
+                                                        name=""
+                                                        required
+                                                >
+                                                <input class="button-search" type='submit' value="Search">
+                                            </form>
                                         </div>
                                         <div class="col-sm-4"></div>
                                         <div class="col-sm-4">
@@ -151,10 +158,7 @@ SPDX-License-Identifier: Apache-2.0
             </div>
         </div>
     </div>
-    <div *ngIf="form.get('name')?.invalid && (form.get('name')?.dirty || form.get('name')?.touched)"
-         class="container alert alert-danger text-center">
-        <div *ngIf="form.get('name')?.errors?.['required']">Field is required.</div>
-    </div>
+
 
 </div>
 
@@ -165,7 +169,10 @@ SPDX-License-Identifier: Apache-2.0
                 What's Popular
             </h1>
             <!-- backend doesn't support pages greater than 500-->
+
             <div class="row" id="articleContainer"></div>
+
+
         </div>
     </div>
 </div>
@@ -173,57 +180,10 @@ SPDX-License-Identifier: Apache-2.0
 <!-- end of  HomePage -->
 
 
-<script>
-    let movie = [];
-    let errorMessage = '';
-    let loading = false;
-    fetch('https://api.themoviedb.org/3/movie/popular?api_key=8ca7086260d6440956c15917b02b2ef1&language=en-US')
-        .then(response => {
-            console.log(response, `response`)
-            if (response && response.status !== 200) {
-                loading = true;
-            }
-            return response.json();
-        })
-        .then(res => {
-            let container = document.querySelector('#articleContainer');
-            let strArticles = "";
-            if (!loading) {
-                movie = res && res['results'];
-                console.log(res)
+<script src="js/getdata.js"></script>
+<!-- start of  footer -->
 
-                setTimeout(() => {
-
-                    movie.forEach((item, id) => {
-                        console.log(id, `id`)
-                        strArticles +=
-                            '<div class="item col-md-3" id="item ' + id + ' "  tabindex="0">' +
-                            '<div class=" h-100 text-center">' +
-                            '<img style="width: 302px; height: 453px" class="card-img-top" src=" https://image.tmdb.org/t/p/w220_and_h330_face/' + item.backdrop_path + '" height="100%" width="100%">' +
-                            '<div class="card-body">' +
-                            '<strong class="card-title">' + item.title + ' </strong>' +
-                            '<strong class="card-text">' + item.original_language + '</strong>' +
-                            '</div>' +
-                            '<div class="card-footer">' +
-                            '<a href="film/442/xx" class=" btn btn-primary d-block">VIEW FILM</a>' +
-                            '</div>' +
-                            '</div>' +
-                            '</div>';
-
-                    })
-                    container.innerHTML = strArticles;
-
-                }, 2000)
-                console.log(movie, `after excuate time >> log >> movie`)
-            }
-        })
-        .catch(err => {
-            errorMessage = err;
-            console.log(err, `error`)
-        })
-</script>
 <div>
-
     <footer style="display: block">
         <div class="footer-section">
             <div class="container">
@@ -263,7 +223,6 @@ SPDX-License-Identifier: Apache-2.0
                     <div class="col-sm">
                         <div class="copy-right">
                             <h5>COMMUNITY </h5>
-
                             <ul>
                                 <li>Guidelines</li>
                                 <li>Discussions</li>
@@ -288,6 +247,7 @@ SPDX-License-Identifier: Apache-2.0
     </footer>
 </div>
 
+<!-- end of  footer -->
 
 </body>
 

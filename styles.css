@@ -504,6 +504,7 @@ html {
 }
 
 /*  end of homepage*/
+
 /* start of footer */
 
 .footer-section {
@@ -576,6 +577,9 @@ li {
         margin: 0 auto;
     }
 
+}
+.hide {
+    display: none;
 }
 
 /*end of footer*/
