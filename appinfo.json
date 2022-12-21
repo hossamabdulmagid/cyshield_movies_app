@@ -7,6 +7,17 @@
   "title": "cysh app",
   "icon": "icon.png",
   "uiRevision": 2,
+  "supportTouchMode": "virtual",
+  "transparent": false,
+  "virtualTouch": {
+    "verticalThreshold": 20,
+    "horizontalThreshold": 50,
+    "positionEventOnPress": true,
+    "shortTouchThreshold": 30
+  },
+  "accessibility": {
+    "supportsAudioGuidance": true
+  },
   "requiredPermissions": [
     "time.query",
     "activity.operation"
